@@ -7,22 +7,6 @@
   "remoteUser": "vscode",
   "mounts": [
     {
-      "source": "${localEnv:HOME}/.ssh",
-      "target": "/home/vscode/.ssh",
-      "type": "bind",
-      "when": {
-        "platform": "macOS"
-      }
-    },
-    {
-      "source": "${localEnv:HOME}/SRC",
-      "target": "/SRC",
-      "type": "bind",
-      "when": {
-        "platform": "macOS"
-      }
-    },
-    {
       "source": "${env:USERPROFILE}\OneDrive\.ssh",
       "target": "/home/vscode/.ssh",
       "type": "bind",
