@@ -1,0 +1,59 @@
+{
+  "name": "Ubuntu Python Linuxbrew DevContainer",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "remoteUser": "vscode",
+  "mounts": [
+    {
+      "source": "${localEnv:HOME}/.ssh",
+      "target": "/home/vscode/.ssh",
+      "type": "bind",
+      "when": {
+        "platform": "macOS"
+      }
+    },
+    {
+      "source": "${localEnv:HOME}/SRC",
+      "target": "/SRC",
+      "type": "bind",
+      "when": {
+        "platform": "macOS"
+      }
+    },
+    {
+      "source": "${env:USERPROFILE}\OneDrive\.ssh",
+      "target": "/home/vscode/.ssh",
+      "type": "bind",
+      "when": {
+        "platform": "win32"
+      }
+    },
+    {
+      "source": "${env:USERPROFILE}\OneDrive\SRC",
+      "target": "/SRC",
+      "type": "bind",
+      "when": {
+        "platform": "win32"
+      },
+      {
+        "source": "${env:USERPROFILE}\OneDrive\.gitconfig",
+        "target": "/home/vscode/.gitconfig",
+        "type": "bind",
+        "when": {
+          "platform": "win32"
+        }
+    }
+  ],
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "extensions": [
+    "ms-python.python",
+    "ms-vscode-remote.remote-containers",
+    "ms-vscode.cpptools",
+    "github.vscode-pull-request-github"
+  ],
+  "postCreateCommand": "sudo chown -R vscode:vscode /home/vscode/.ssh && chmod 700 /home/vscode/.ssh"
+}
